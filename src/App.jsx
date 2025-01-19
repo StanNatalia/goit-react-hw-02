@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [feedbackData, setFeedbackData] = useState(
     () =>
-      JSON.parse(localStorage.getItem("feedback")) ?? {
+      JSON.parse(localStorage.getItem("feedbacks")) ?? {
         good: 0,
         neutral: 0,
         bad: 0,
