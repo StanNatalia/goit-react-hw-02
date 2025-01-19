@@ -6,19 +6,14 @@ import Feedback from "./components/Feedback/Feedback";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [feedbackData, setFeedbackData] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  });
-
-  useEffect(() => {
-    const savedFeedbacks = JSON.parse(localStorage.getItem("feedbacks"));
-    console.log("Loaded feedbacks from localStorage:", savedFeedbacks);
-    if (savedFeedbacks) {
-      setFeedbackData(savedFeedbacks);
-    }
-  }, []);
+  const [feedbackData, setFeedbackData] = useState(
+    () =>
+      JSON.parse(localStorage.getItem("feedback")) ?? {
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      }
+  );
 
   useEffect(() => {
     console.log("Saving feedbacks to localStorage:", feedbackData);
